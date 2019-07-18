@@ -1,0 +1,32 @@
+cc_library(
+  name = "SDL2ttf",
+  hdrs = glob(["include/*.h"]),
+  strip_include_prefix = "include",
+  visibility = ["//visibility:public"],
+  deps = [
+    	":SDL2ttf_lib",
+	":SDL2ttf_libfree",
+	":SDL2ttf_zlib",
+  ],
+)
+
+cc_import(
+  name = "SDL2ttf_lib",
+  interface_library = "lib/x64/SDL2_ttf.lib",
+  shared_library = "lib/x64/SDL2_ttf.dll",
+  visibility = ["//visibility:private"],
+)
+
+cc_import(
+  name = "SDL2ttf_libfree",
+  interface_library = "lib/x64/SDL2_ttf.lib",
+  shared_library = "lib/x64/libfreetype-6.dll.dll",
+  visibility = ["//visibility:private"],
+)
+
+cc_import(
+  name = "SDL2ttf_zlib",
+  interface_library = "lib/x64/SDL2_ttf.lib",
+  shared_library = "lib/x64/zlib1.dll",
+  visibility = ["//visibility:private"],
+)
